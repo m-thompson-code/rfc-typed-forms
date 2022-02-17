@@ -12,14 +12,14 @@
     },
     "husky": {
         "hooks": {
-          "pre-commit": "lint-staged"
+            "pre-commit": "lint-staged"
         }
     },
     "lint-staged": {
         "*.{ts,html}": [
-          "eslint --ignore-path .gitignore --fix",
-          "prettier --write",
-          "git add"
+            "eslint --ignore-path .gitignore --fix",
+            "prettier --write",
+            "git add"
         ]
     },
     "private": true,
