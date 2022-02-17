@@ -1,1 +1,11 @@
-<p>dealing-with-errors works!</p>
+<ng-container *ngIf="!loading; else showLoading">
+    <div *ngIf="showMeanComment">You are broke as a joke</div>
+
+    <form [formGroup]="form">
+        <input type="number" formControlName="amount" />
+    </form>
+</ng-container>
+
+<ng-template #showLoading>
+    <div>Loading . . .</div>
+</ng-template>
