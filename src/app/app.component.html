@@ -1,6 +1,6 @@
 <form [formGroup]="form" #formRef>
-  <input formControlName="name">
-  <input type="number" formControlName="favoriteAngularVersion">
+  <input formControlName="name" />
+  <input type="number" formControlName="favoriteAngularVersion" />
   <button type="submit">Submit</button>
 </form>
 
@@ -14,3 +14,4 @@ Submit values
   {{ submitValue | json }}
 </div>
 
+<router-outlet></router-outlet>
