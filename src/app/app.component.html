@@ -1,17 +1,2 @@
-<form [formGroup]="form" #formRef>
-  <input formControlName="name" />
-  <input type="number" formControlName="favoriteAngularVersion" />
-  <button type="submit">Submit</button>
-</form>
-
-Form values
-<div>
-  {{ form.value | json }}
-</div>
-
-Submit values
-<div *ngIf="submitValue$ | async as submitValue">
-  {{ submitValue | json }}
-</div>
-
+<a routerLink="">root</a>
 <router-outlet></router-outlet>

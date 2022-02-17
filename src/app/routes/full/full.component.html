@@ -1,36 +1,46 @@
-<p>full works!</p>
+<form [formGroup]="form" #formRef>
+    <input formControlName="name" />
+    <input type="number" formControlName="favoriteAngularVersionMajor" />
+    <input type="number" formControlName="favoriteAngularVersionMinor" />
+    <input type="number" formControlName="favoriteAngularVersionPatch" />
+    <div></div>
+    <label for="hateReact">Hate React</label>
+    <input type="checkbox" id="hateReact" formControlName="hateReact" />
 
-<input type="number" name="age" id="age" min="1" max="10" step="2" />
+    <label for="eslint">HTML</label><br />
+    <input type="radio" id="eslint" name="favoriteLinter" value="eslint" formControlName="favoriteLinter" />
+    <label for="css">eslint</label><br />
+    <input type="radio" id="tslint" name="favoriteLinter" value="tslint" formControlName="favoriteLinter" />
+    <label for="tslint">tslint</label>
+    <input type="radio" id="other" name="favoriteLinter" value="other" formControlName="favoriteLinter" />
+    <label for="other">other</label>
 
-<label for="price">Choose a maximum house price: </label>
-<input
-  type="range"
-  name="price"
-  id="price"
-  min="50000"
-  max="500000"
-  step="100"
-  value="250000"
-/>
-<output class="price-output" for="price"></output>
+    <label for="powerLevel">Power level:</label>
+    <input type="range" name="powerLevel" id="powerLevel" min="0" max="9100" step="100" formControlName="powerLevel" />
 
-<input type="datetime-local" name="datetime" id="datetime" />
+    <input custom-date type="datetime-local" name="datetime" id="datetime" formControlName="date" />
 
-<input type="color" name="color" id="color" />
+    <input type="color" name="color" id="color" formControlName="color" />
 
-<label for="fname">First name:</label><br />
-<input type="text" id="fname" name="fname" /><br />
+    <button type="submit">Submit</button>
+</form>
 
-<input type="radio" id="html" name="fav_language" value="HTML" />
-<label for="html">HTML</label><br />
-<input type="radio" id="css" name="fav_language" value="CSS" />
-<label for="css">CSS</label><br />
-<input type="radio" id="javascript" name="fav_language" value="JavaScript" />
-<label for="javascript">JavaScript</label>
+<button (click)="toggleDisabledState()">Toggle disable state</button>
 
-<input type="checkbox" id="vehicle1" name="vehicle1" value="Bike" />
-<label for="vehicle1"> I have a bike</label><br />
-<input type="checkbox" id="vehicle2" name="vehicle2" value="Car" />
-<label for="vehicle2"> I have a car</label><br />
-<input type="checkbox" id="vehicle3" name="vehicle3" value="Boat" />
-<label for="vehicle3"> I have a boat</label>
+<button (click)="reset()">Reset</button>
+<button (click)="resetWithValues()">Reset with values</button>
+
+<div>Form values</div>
+<div>
+    {{ form.value | json }}
+</div>
+
+<div>Submit values</div>
+<div *ngIf="submitValue$ | async as submitValue">
+    {{ submitValue | json }}
+</div>
+
+<div>Submit raw values</div>
+<div *ngIf="submitRawValue$ | async as submitRawValue">
+    {{ submitRawValue | json }}
+</div>

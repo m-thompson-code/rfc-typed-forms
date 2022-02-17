@@ -26,7 +26,8 @@
                         "style": "kebab-case"
                     }
                 ],
-                "max-len": ["error", { "code": 140, "tabWidth": 4 }]
+                "max-len": ["error", { "code": 140, "tabWidth": 4 }],
+                "indent": ["error", 4]
             }
         },
         {

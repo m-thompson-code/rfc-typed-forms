@@ -11,19 +11,22 @@ import { FullComponent } from './routes/full/full.component';
 import { DealingWithErrorsComponent } from './routes/dealing-with-errors/dealing-with-errors.component';
 import { ResetingFormsComponent } from './routes/reseting-forms/reseting-forms.component';
 import { DisabledFormsComponent } from './routes/disabled-forms/disabled-forms.component';
+// eslint-disable-next-line max-len
+import { DatetimeControlValueAccessorDirective } from './directives/datetime-control-value-accessor/datetime-control-value-accessor.directive';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    RootComponent,
-    BasicComponent,
-    FullComponent,
-    DealingWithErrorsComponent,
-    ResetingFormsComponent,
-    DisabledFormsComponent,
-  ],
-  imports: [BrowserModule, AppRoutingModule, ReactiveFormsModule, NgLetModule],
-  providers: [],
-  bootstrap: [AppComponent],
+    declarations: [
+        AppComponent,
+        RootComponent,
+        BasicComponent,
+        FullComponent,
+        DealingWithErrorsComponent,
+        ResetingFormsComponent,
+        DisabledFormsComponent,
+        DatetimeControlValueAccessorDirective,
+    ],
+    imports: [BrowserModule, AppRoutingModule, ReactiveFormsModule, NgLetModule],
+    providers: [],
+    bootstrap: [AppComponent],
 })
 export class AppModule {}

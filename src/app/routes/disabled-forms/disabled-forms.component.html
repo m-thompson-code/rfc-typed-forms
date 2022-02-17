@@ -1,1 +1,25 @@
-<p>disabled-forms works!</p>
+<form [formGroup]="form" #formRef>
+    <input formControlName="name" />
+    <input type="number" formControlName="favoriteAngularVersion" />
+    <div></div>
+    <label for="hateReact">Hate React</label>
+    <input type="checkbox" id="hateReact" formControlName="hateReact" />
+    <button type="submit">Submit</button>
+</form>
+
+<button (click)="toggleDisabledState()">Toggle disable state</button>
+
+<div>Form values</div>
+<div>
+    {{ form.value | json }}
+</div>
+
+<div>Submit values</div>
+<div *ngIf="submitValue$ | async as submitValue">
+    {{ submitValue | json }}
+</div>
+
+<div>Submit raw values</div>
+<div *ngIf="submitRawValue$ | async as submitRawValue">
+    {{ submitRawValue | json }}
+</div>

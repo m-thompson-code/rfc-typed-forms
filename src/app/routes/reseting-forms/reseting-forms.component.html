@@ -1,1 +1,28 @@
-<p>reseting-forms works!</p>
+<form [formGroup]="form" #formRef>
+    <input formControlName="name" />
+    <input type="number" formControlName="favoriteAngularVersion" />
+    <input type="radio" id="html" name="fav_language" value="HTML" />
+
+    <label for="eslint">HTML</label><br />
+    <input type="radio" id="eslint" name="favoriteLinter" value="eslint" formControlName="favoriteLinter" />
+    <label for="css">eslint</label><br />
+    <input type="radio" id="tslint" name="favoriteLinter" value="tslint" formControlName="favoriteLinter" />
+    <label for="tslint">tslint</label>
+    <input type="radio" id="other" name="favoriteLinter" value="other" formControlName="favoriteLinter" />
+    <label for="other">other</label>
+
+    <button type="submit">Submit</button>
+</form>
+
+<button (click)="reset()">Reset</button>
+<button (click)="resetWithValues()">Reset with values</button>
+
+Form values
+<div>
+    {{ form.value | json }}
+</div>
+
+Submit values
+<div *ngIf="submitValue$ | async as submitValue">
+    {{ submitValue | json }}
+</div>
