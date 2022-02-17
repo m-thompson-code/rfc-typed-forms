@@ -6,6 +6,6 @@ import { Component } from '@angular/core';
     styleUrls: ['./full.component.scss'],
 })
 export class FullComponent {
-         
+          
     constructor() {} // asdfasdfasdfasdfasdfasdfasfasfsfasdfasdfasdfasdfasdfasdfasfasfsfasdfasdfasdfasdfasdfasdfasfasfsfasdfasdfasdfasdfasdfasdfasfasfsf
 }
