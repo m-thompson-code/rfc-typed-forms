@@ -13,6 +13,7 @@ import { ResetingFormsComponent } from './routes/reseting-forms/reseting-forms.c
 import { DisabledFormsComponent } from './routes/disabled-forms/disabled-forms.component';
 // eslint-disable-next-line max-len
 import { DatetimeControlValueAccessorDirective } from './directives/datetime-control-value-accessor/datetime-control-value-accessor.directive';
+import { FormBuilderComponent } from './routes/form-builder/form-builder.component';
 
 @NgModule({
     declarations: [
@@ -24,6 +25,7 @@ import { DatetimeControlValueAccessorDirective } from './directives/datetime-con
         ResetingFormsComponent,
         DisabledFormsComponent,
         DatetimeControlValueAccessorDirective,
+        FormBuilderComponent,
     ],
     imports: [BrowserModule, AppRoutingModule, ReactiveFormsModule, NgLetModule],
     providers: [],
