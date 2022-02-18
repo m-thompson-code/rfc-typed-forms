@@ -1,0 +1,17 @@
+<form [formGroup]="form" #formRef>
+    <input formControlName="feedback" />
+    <label for="hasHardOpinion">I have a hard opinion</label>
+    <input type="checkbox" id="hasHardOpinion" formControlName="hasHardOpinion" />
+    <input *ngIf="showRantInput$ | async" formControlName="rant" />
+    <button type="submit">Submit</button>
+</form>
+
+Form values
+<div>
+    {{ form.value | json }}
+</div>
+
+Submit values
+<div *ngIf="submitValue$ | async as submitValue">
+    {{ submitValue | json }}
+</div>
