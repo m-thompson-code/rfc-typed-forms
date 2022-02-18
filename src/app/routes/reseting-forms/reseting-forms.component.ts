@@ -24,7 +24,9 @@ export class ResetingFormsComponent implements OnInit {
     form: FormGroup; //<TypedForm>;
 
     submitValue$!: Observable<unknown>;
+    // submitValue$!: Observable<FormGroup['value']>;
     submitRawValue$!: Observable<unknown>;
+    // submitRawValue$!: Observable<ReturnType<FormGroup['getRawValue']>>;
 
     Linter = Linter;
 
