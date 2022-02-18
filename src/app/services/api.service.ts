@@ -1,6 +1,10 @@
 import { Injectable } from '@angular/core';
 import { mapTo, Observable, timer } from 'rxjs';
 
+export interface UndefinedAmount {
+    currency?: never;
+}
+
 export interface Amount {
     currency: {
         amount: number;
@@ -12,7 +16,7 @@ export interface Amount {
     providedIn: 'root',
 })
 export class ApiService {
-    doRequest(): Observable<Partial<Amount>> {
+    doRequest(): Observable<Amount | UndefinedAmount> {
         return timer(3000).pipe(mapTo({}));
     }
 }
