@@ -8,21 +8,21 @@ enum Linter {
     OTHER = 'other',
 }
 
-type AngularVersionForm = {
-    major: FormControl<number | null>;
-    minor: FormControl<number | null>;
-    patch: FormControl<number | null>;
-};
+// type AngularVersionForm = {
+//     major: FormControl<number | null>;
+//     minor: FormControl<number | null>;
+//     patch: FormControl<number | null>;
+// };
 
-type TypedForm = {
-    name: FormControl<string | null>;
-    favoriteAngularVersion: FormGroup<AngularVersionForm>;
-    hateReact: FormControl<boolean | null>;
-    favoriteLinter: FormControl<Linter | null>;
-    powerLevel: FormControl<number | null>;
-    color: FormControl<`#${string}` | null>;
-    date: FormControl<Date | null>;
-};
+// type TypedForm = {
+//     name: FormControl<string | null>;
+//     favoriteAngularVersion: FormGroup<AngularVersionForm>;
+//     hateReact: FormControl<boolean | null>;
+//     favoriteLinter: FormControl<Linter | null>;
+//     powerLevel: FormControl<number | null>;
+//     color: FormControl<`#${string}` | null>;
+//     date: FormControl<Date | null>;
+// };
 
 @Component({
     selector: 'app-full',
@@ -32,10 +32,12 @@ type TypedForm = {
 export class FullComponent implements OnInit {
     @ViewChild('formRef', { static: true }) formRef!: ElementRef<HTMLFormElement>;
 
-    form: FormGroup<TypedForm>;
+    form: FormGroup; //<TypedForm>;
 
-    submitValue$!: Observable<FormGroup<TypedForm>['value']>;
-    submitRawValue$!: Observable<ReturnType<FormGroup<TypedForm>['getRawValue']>>;
+    submitValue$!: Observable<unknown>;
+    // submitValue$!: Observable<FormGroup<TypedForm>['value']>;
+    submitRawValue$!: Observable<unknown>;
+    // submitRawValue$!: Observable<ReturnType<FormGroup<TypedForm>['getRawValue']>>;
 
     Linter = Linter;
 

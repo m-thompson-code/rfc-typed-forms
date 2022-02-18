@@ -8,10 +8,10 @@ enum Linter {
     OTHER = 'other',
 }
 
-type TypedForm = {
-    name: FormControl<string | null>;
-    favoriteLinter: FormControl<Linter | null>;
-};
+// type TypedForm = {
+//     name: FormControl<string | null>;
+//     favoriteLinter: FormControl<Linter | null>;
+// };
 
 @Component({
     selector: 'app-reseting-forms',
@@ -21,7 +21,7 @@ type TypedForm = {
 export class ResetingFormsComponent implements OnInit {
     @ViewChild('formRef', { static: true }) formRef!: ElementRef<HTMLFormElement>;
 
-    form: FormGroup<TypedForm>;
+    form: FormGroup; //<TypedForm>;
 
     submitValue$!: Observable<unknown>;
     submitRawValue$!: Observable<unknown>;

@@ -1,15 +1,15 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 
-type TypedForm = {
-    name: FormControl<string | null>;
-    favoriteAngularVersion: FormControl<number | null>;
-};
+// type TypedForm = {
+//     name: FormControl<string | null>;
+//     favoriteAngularVersion: FormControl<number | null>;
+// };
 
-type TypedForm2 = {
-    name: AbstractControl<string | null, string | null>;
-    favoriteAngularVersion: AbstractControl<number | null, number | null>;
-};
+// type TypedForm2 = {
+//     name: AbstractControl<string | null, string | null>;
+//     favoriteAngularVersion: AbstractControl<number | null, number | null>;
+// };
 
 @Component({
     selector: 'app-form-builder',
@@ -20,8 +20,8 @@ export class FormBuilderComponent {
     @ViewChild('formRef', { static: true }) formRef!: ElementRef<HTMLFormElement>;
     @ViewChild('formRef2', { static: true }) formRef2!: ElementRef<HTMLFormElement>;
 
-    form: FormGroup<TypedForm>;
-    form2: FormGroup<TypedForm2>;
+    form: FormGroup; // <TypedForm>;
+    form2: FormGroup; // <TypedForm2>;
 
     constructor(private readonly fb: FormBuilder) {
         this.form = new FormGroup({
