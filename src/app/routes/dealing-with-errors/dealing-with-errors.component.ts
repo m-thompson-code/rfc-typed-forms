@@ -3,9 +3,9 @@ import { FormControl, FormGroup } from '@angular/forms';
 import { Subject, takeUntil, tap } from 'rxjs';
 import { Amount, ApiService } from 'src/app/services/api.service';
 
-// type TypedForm = {
-//     amount: FormControl<Amount | null>;
-// }
+type TypedForm = {
+    amount: FormControl<Amount | null>;
+};
 
 @Component({
     selector: 'app-dealing-with-errors',
@@ -43,8 +43,9 @@ export class DealingWithErrorsComponent implements OnInit, OnDestroy {
             .subscribe();
     }
 
-    setShowMeanComment(amount: Amount): void {
-        this.showMeanComment = amount.currency.amount <= 0;
+    setShowMeanComment(amount: Amount | null): void {
+        const value = amount?.currency.amount ?? 0;
+        this.showMeanComment = value <= 0;
     }
 
     ngOnDestroy(): void {

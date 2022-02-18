@@ -2,10 +2,10 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { fromEvent, map, Observable } from 'rxjs';
 
-// type TypedForm = {
-//     name: FormControl<string | null>;
-//     favoriteAngularVersion: FormControl<number | null>;
-// }
+type TypedForm = {
+    name: FormControl<string | null>;
+    favoriteAngularVersion: FormControl<number | null>;
+};
 
 // type TypedForm = {
 //     name: FormControl<string>;
@@ -20,10 +20,10 @@ import { fromEvent, map, Observable } from 'rxjs';
 export class BasicComponent implements OnInit {
     @ViewChild('formRef', { static: true }) formRef!: ElementRef<HTMLFormElement>;
 
-    form: FormGroup; //<TypedForm>;
+    form: FormGroup<TypedForm>;
 
-    submitValue$!: Observable<unknown>;
-    // submitValue$!: Observable<FormGroup<TypedForm>['value']>;
+    // submitValue$!: Observable<unknown>;
+    submitValue$!: Observable<FormGroup<TypedForm>['value']>;
 
     constructor() {
         this.form = new FormGroup({
