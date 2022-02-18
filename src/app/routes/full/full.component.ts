@@ -8,6 +8,22 @@ enum Linter {
     OTHER = 'other',
 }
 
+type AngularVersionForm = {
+    major: FormControl<number | null>;
+    minor: FormControl<number | null>;
+    patch: FormControl<number | null>;
+};
+
+type TypedForm = {
+    name: FormControl<string | null>;
+    favoriteAngularVersion: FormGroup<AngularVersionForm>;
+    hateReact: FormControl<boolean | null>;
+    favoriteLinter: FormControl<Linter | null>;
+    powerLevel: FormControl<number | null>;
+    color: FormControl<`#${string}` | null>;
+    date: FormControl<Date | null>;
+};
+
 @Component({
     selector: 'app-full',
     templateUrl: './full.component.html',
@@ -16,19 +32,21 @@ enum Linter {
 export class FullComponent implements OnInit {
     @ViewChild('formRef', { static: true }) formRef!: ElementRef<HTMLFormElement>;
 
-    form: FormGroup;
+    form: FormGroup<TypedForm>;
 
-    submitValue$!: Observable<unknown>;
-    submitRawValue$!: Observable<unknown>;
+    submitValue$!: Observable<FormGroup<TypedForm>['value']>;
+    submitRawValue$!: Observable<ReturnType<FormGroup<TypedForm>['getRawValue']>>;
 
     Linter = Linter;
 
     constructor() {
         this.form = new FormGroup({
             name: new FormControl('', Validators.required),
-            favoriteAngularVersionMajor: new FormControl(2, [Validators.min(2), Validators.max(14)]),
-            favoriteAngularVersionMinor: new FormControl(2, [Validators.min(0), Validators.max(30)]),
-            favoriteAngularVersionPatch: new FormControl(2, [Validators.min(0), Validators.max(30)]),
+            favoriteAngularVersion: new FormGroup({
+                major: new FormControl(2, [Validators.min(2), Validators.max(14)]),
+                minor: new FormControl(0, [Validators.min(0), Validators.max(30)]),
+                patch: new FormControl(0, [Validators.min(0), Validators.max(30)]),
+            }),
             hateReact: new FormControl(false),
             favoriteLinter: new FormControl(Linter.ESLINT),
             powerLevel: new FormControl(),
@@ -58,9 +76,11 @@ export class FullComponent implements OnInit {
     resetWithValues(): void {
         this.form.reset({
             name: 'no name',
-            favoriteAngularVersionMajor: 2,
-            favoriteAngularVersionMinor: 0,
-            favoriteAngularVersionPatch: 0,
+            favoriteAngularVersion: {
+                major: 2,
+                minor: 0,
+                patch: 0,
+            },
             hateReact: false,
             favoriteLinter: Linter.ESLINT,
             powerLevel: 0,

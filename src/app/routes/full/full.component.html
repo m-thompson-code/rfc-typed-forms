@@ -1,45 +1,61 @@
-<form [formGroup]="form" #formRef>
-    <input formControlName="name" />
-    <input type="number" formControlName="favoriteAngularVersionMajor" />
-    <input type="number" formControlName="favoriteAngularVersionMinor" />
-    <input type="number" formControlName="favoriteAngularVersionPatch" />
-    <div></div>
-    <label for="hateReact">Hate React</label>
-    <input type="checkbox" id="hateReact" formControlName="hateReact" />
+<div class="page">
+    <div class="section">
+        <div>Mix of All Examples</div>
+        <form [formGroup]="form" #formRef>
+            <input formControlName="name" placeholder="name" />
 
-    <label for="eslint">Favorite linter</label>
+            <div>Favorite Angular Version</div>
+            <div class="flex-row">
+                <ng-container formGroupName="favoriteAngularVersion">
+                    <input type="number" formControlName="major" placeholder="major" />
+                    <input type="number" formControlName="minor" placeholder="minor" />
+                    <input type="number" formControlName="patch" placeholder="patch" />
+                </ng-container>
+            </div>
 
-    <ng-container *ngFor="let linter of [Linter.ESLINT, Linter.TSLINT, Linter.OTHER]">
-        <input type="radio" [id]="linter" name="favoriteLinter" [value]="linter" formControlName="favoriteLinter" />
-        <label [for]="linter">{{ linter }}</label>
-    </ng-container>
+            <div class="flex-row">
+                <input type="checkbox" id="hateReact" formControlName="hateReact" />
+                <label for="hateReact">Hate React {{ form.controls['hateReact'].value ? '(Wow rude...)' : '' }}</label>
+            </div>
 
-    <label for="powerLevel">Power level:</label>
-    <input type="range" name="powerLevel" id="powerLevel" min="0" max="9100" step="100" formControlName="powerLevel" />
+            <label for="eslint">Favorite linter</label>
 
-    <input custom-date type="datetime-local" name="datetime" id="datetime" formControlName="date" />
+            <div class="flex-row" *ngFor="let linter of [Linter.ESLINT, Linter.TSLINT, Linter.OTHER]">
+                <input type="radio" [id]="linter" name="favoriteLinter" [value]="linter" formControlName="favoriteLinter" />
+                <label [for]="linter">{{ linter }}</label>
+            </div>
 
-    <input type="color" name="color" id="color" formControlName="color" />
+            <label for="powerLevel">Power level: {{ form.controls['powerLevel'].value }}</label>
+            <input type="range" name="powerLevel" id="powerLevel" min="0" max="9100" step="100" formControlName="powerLevel" />
 
-    <button type="submit">Submit</button>
-</form>
+            <input custom-date type="datetime-local" name="datetime" id="datetime" formControlName="date" />
 
-<button (click)="toggleDisabledState()">Toggle disable state</button>
+            <input type="color" name="color" id="color" formControlName="color" />
 
-<button (click)="reset()">Reset</button>
-<button (click)="resetWithValues()">Reset with values</button>
+            <button type="submit">Submit</button>
+        </form>
 
-<div>Form values</div>
-<div>
-    {{ form.value | json }}
-</div>
+        <div class="flex-row">
+            <button (click)="toggleDisabledState()">Toggle disable state</button>
+            <button (click)="reset()">Reset</button>
+            <button (click)="resetWithValues()">Reset with values</button>
+        </div>
+    </div>
 
-<div>Submit values</div>
-<div *ngIf="submitValue$ | async as submitValue">
-    {{ submitValue | json }}
-</div>
+    <div class="section">
+        <div>Form value:</div>
+        <div class="json">
+            {{ form.value | json }}
+        </div>
 
-<div>Submit raw values</div>
-<div *ngIf="submitRawValue$ | async as submitRawValue">
-    {{ submitRawValue | json }}
+        <div>Submit value:</div>
+        <div class="json" *ngLet="submitValue$ | async as submitValue">
+            {{ submitValue | json }}
+        </div>
+
+        <div>Submit raw values:</div>
+        <div class="json" *ngLet="submitRawValue$ | async as submitRawValue">
+            {{ submitRawValue | json }}
+        </div>
+    </div>
 </div>

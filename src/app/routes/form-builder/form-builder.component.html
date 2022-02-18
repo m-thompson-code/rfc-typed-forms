@@ -1,33 +1,27 @@
-<form [formGroup]="form" #formRef>
-    <input formControlName="name" />
-    <input type="number" formControlName="favoriteAngularVersion" />
-    <button type="submit">Submit</button>
-</form>
+<div class="page">
+    <div class="section">
+        <div>FormGroup Constructor vs FormBuilder</div>
+        <form [formGroup]="form" #formRef>
+            <input formControlName="name" placeholder="name" />
+            <input type="number" formControlName="favoriteAngularVersion" placeholder="Favorite Angular Version" />
+            <button type="submit">Submit</button>
+        </form>
 
-Form values
-<div>
-    {{ form.value | json }}
-</div>
+        <form [formGroup]="form2" #formRef2>
+            <input formControlName="name" placeholder="name" />
+            <input type="number" formControlName="favoriteAngularVersion" />
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+    <div class="section">
+        <div>Form value using FormGroup constructor:</div>
+        <div class="json">
+            {{ form.value | json }}
+        </div>
 
-Submit values
-<div *ngIf="submitValue$ | async as submitValue">
-    {{ submitValue | json }}
-</div>
-
-<div>------</div>
-
-<form [formGroup]="form2" #formRef2>
-    <input formControlName="name" />
-    <input type="number" formControlName="favoriteAngularVersion" />
-    <button type="submit">Submit</button>
-</form>
-
-Form values
-<div>
-    {{ form2.value | json }}
-</div>
-
-Submit values
-<div *ngIf="submitValue2$ | async as submitValue">
-    {{ submitValue | json }}
+        <div>Form value using FormBuilder:</div>
+        <div class="json">
+            {{ form2.value | json }}
+        </div>
+    </div>
 </div>

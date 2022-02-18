@@ -1,15 +1,21 @@
-<form [formGroup]="form" #formRef>
-    <input formControlName="name" />
-    <input type="number" formControlName="favoriteAngularVersion" />
-    <button type="submit">Submit</button>
-</form>
+<div class="page">
+    <div class="section">
+        <div>Improving Types</div>
+        <form [formGroup]="form" #formRef>
+            <input formControlName="name" placeholder="name" />
+            <input type="number" formControlName="favoriteAngularVersion" />
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+    <div class="section">
+        <div>Form value:</div>
+        <div class="json">
+            {{ form.value | json }}
+        </div>
 
-Form values
-<div>
-    {{ form.value | json }}
-</div>
-
-Submit values
-<div *ngIf="submitValue$ | async as submitValue">
-    {{ submitValue | json }}
+        <div>Submit value:</div>
+        <div class="json" *ngLet="submitValue$ | async as submitValue">
+            {{ submitValue | json }}
+        </div>
+    </div>
 </div>

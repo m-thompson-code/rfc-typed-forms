@@ -1,25 +1,34 @@
-<form [formGroup]="form" #formRef>
-    <input formControlName="name" />
-    <input type="number" formControlName="favoriteAngularVersion" />
-    <div></div>
-    <label for="hateReact">Hate React</label>
-    <input type="checkbox" id="hateReact" formControlName="hateReact" />
-    <button type="submit">Submit</button>
-</form>
+<div class="page">
+    <div class="section">
+        <div>Disabled Forms</div>
+        <form [formGroup]="form" #formRef>
+            <input formControlName="name" placeholder="name" />
+            <input type="number" formControlName="favoriteAngularVersion" placeholder="Favorite Angular Version" />
 
-<button (click)="toggleDisabledState()">Toggle disable state</button>
+            <div class="flex-row">
+                <input type="checkbox" id="hateReact" formControlName="hateReact" />
+                <label for="hateReact">Hate React {{ form.controls['hateReact'].value ? '(Wow rude...)' : '' }}</label>
+            </div>
 
-<div>Form values</div>
-<div>
-    {{ form.value | json }}
-</div>
+            <button type="submit">Submit</button>
+        </form>
 
-<div>Submit values</div>
-<div *ngIf="submitValue$ | async as submitValue">
-    {{ submitValue | json }}
-</div>
+        <button (click)="toggleDisabledState()">Toggle disable state</button>
+    </div>
+    <div class="section">
+        <div>Form value:</div>
+        <div class="json">
+            {{ form.value | json }}
+        </div>
 
-<div>Submit raw values</div>
-<div *ngIf="submitRawValue$ | async as submitRawValue">
-    {{ submitRawValue | json }}
+        <div>Submit value:</div>
+        <div class="json" *ngLet="submitValue$ | async as submitValue">
+            {{ submitValue | json }}
+        </div>
+
+        <div>Submit raw value:</div>
+        <div class="json" *ngLet="submitRawValue$ | async as submitRawValue">
+            {{ submitRawValue | json }}
+        </div>
+    </div>
 </div>

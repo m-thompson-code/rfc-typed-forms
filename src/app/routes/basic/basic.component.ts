@@ -7,11 +7,6 @@ import { fromEvent, map, Observable } from 'rxjs';
 //     favoriteAngularVersion: FormControl<number | null>;
 // }
 
-// type TypedForm = {
-//     name: FormControl<string>;
-//     favoriteAngularVersion: FormControl<number>;
-// }
-
 @Component({
     selector: 'app-basic',
     templateUrl: './basic.component.html',

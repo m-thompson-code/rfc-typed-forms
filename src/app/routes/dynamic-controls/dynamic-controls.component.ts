@@ -1,6 +1,12 @@
 import { Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import { fromEvent, map, Observable, Subject, takeUntil, tap } from 'rxjs';
+import { fromEvent, map, Observable, Subject, tap } from 'rxjs';
+
+// interface TypedForm {
+//     feedback: FormControl<string | null>;
+//     hasHardOpinion: FormControl<boolean | null>;
+//     rant: FormControl<boolean | null>;
+// }
 
 @Component({
     selector: 'app-dynamic-controls',
@@ -10,12 +16,12 @@ import { fromEvent, map, Observable, Subject, takeUntil, tap } from 'rxjs';
 export class DynamicControlsComponent implements OnInit, OnDestroy {
     @ViewChild('formRef', { static: true }) formRef!: ElementRef<HTMLFormElement>;
 
-    form: FormGroup; //<TypedForm>;
+    form: FormGroup; // <TypedForm>;
 
     submitValue$!: Observable<unknown>;
     // submitValue$!: Observable<FormGroup<TypedForm>['value']>;
 
-    showRantInput$!: Observable<boolean>;
+    showRantInput$!: Observable<boolean | null>;
 
     private readonly unsubscribe$ = new Subject<void>();
 

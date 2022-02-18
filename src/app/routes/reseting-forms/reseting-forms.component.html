@@ -1,27 +1,33 @@
-<form [formGroup]="form" #formRef>
-    <input formControlName="name" />
-    <input type="number" formControlName="favoriteAngularVersion" />
-    <input type="radio" id="html" name="fav_language" value="HTML" />
+<div class="page">
+    <div class="section">
+        <div>Reseting Forms</div>
+        <form [formGroup]="form" #formRef>
+            <input formControlName="name" placeholder="name" />
+            <input type="number" formControlName="favoriteAngularVersion" placeholder="Favorite Angular Version" />
 
-    <label for="eslint">Favorite linter</label>
+            <div>Favorite linter</div>
+            <div class="flex-row" *ngFor="let linter of [Linter.ESLINT, Linter.TSLINT, Linter.OTHER]">
+                <input type="radio" [id]="linter" name="favoriteLinter" [value]="linter" formControlName="favoriteLinter" />
+                <label [for]="linter">{{ linter }}</label>
+            </div>
 
-    <ng-container *ngFor="let linter of [Linter.ESLINT, Linter.TSLINT, Linter.OTHER]">
-        <input type="radio" [id]="linter" name="favoriteLinter" [value]="linter" formControlName="favoriteLinter" />
-        <label [for]="linter">{{ linter }}</label>
-    </ng-container>
+            <button type="submit">Submit</button>
+        </form>
 
-    <button type="submit">Submit</button>
-</form>
+        <div class="flex-row">
+            <button (click)="reset()">Reset</button>
+            <button (click)="resetWithValues()">Reset with values</button>
+        </div>
+    </div>
+    <div class="section">
+        <div>Form value:</div>
+        <div class="json">
+            {{ form.value | json }}
+        </div>
 
-<button (click)="reset()">Reset</button>
-<button (click)="resetWithValues()">Reset with values</button>
-
-Form values
-<div>
-    {{ form.value | json }}
-</div>
-
-Submit values
-<div *ngIf="submitValue$ | async as submitValue">
-    {{ submitValue | json }}
+        <div>Submit value:</div>
+        <div class="json" *ngLet="submitValue$ | async as submitValue">
+            {{ submitValue | json }}
+        </div>
+    </div>
 </div>
