@@ -1,5 +1,5 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
 import { fromEvent, map, Observable } from 'rxjs';
 
 // type TypedForm = {
@@ -22,11 +22,8 @@ export class BasicComponent implements OnInit {
 
     constructor() {
         this.form = new FormGroup({
-            name: new FormControl('', { validators: Validators.required, initialValueIsDefault: true }),
-            favoriteAngularVersion: new FormControl(2, {
-                validators: [Validators.min(2), Validators.max(14)],
-                initialValueIsDefault: true,
-            }),
+            name: new FormControl('', Validators.required),
+            favoriteAngularVersion: new FormControl(2, [Validators.min(2), Validators.max(14)]),
         });
     }
 

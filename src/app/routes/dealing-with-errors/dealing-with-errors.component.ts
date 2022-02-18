@@ -4,8 +4,7 @@ import { Subject, takeUntil, tap } from 'rxjs';
 import { Amount, ApiService } from 'src/app/services/api.service';
 
 // type TypedForm = {
-//     name: FormControl<string | null>;
-//     favoriteAngularVersion: FormControl<number | null>;
+//     amount: FormControl<Amount | null>;
 // }
 
 @Component({
@@ -14,7 +13,7 @@ import { Amount, ApiService } from 'src/app/services/api.service';
     styleUrls: ['./dealing-with-errors.component.scss'],
 })
 export class DealingWithErrorsComponent implements OnInit, OnDestroy {
-    readonly form: FormGroup; //<TypedForm>;
+    readonly form: FormGroup; // <TypedForm>;
 
     showMeanComment: boolean = false;
 
