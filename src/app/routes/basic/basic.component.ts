@@ -1,5 +1,5 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { fromEvent, map, Observable } from 'rxjs';
 
 @Component({
@@ -14,10 +14,10 @@ export class BasicComponent implements OnInit {
 
     submitValue$!: Observable<unknown>;
 
-    constructor(private fb: FormBuilder) {
-        this.form = this.fb.group({
-            name: ['', Validators.required],
-            favoriteAngularVersion: [2, [Validators.min(2), Validators.max(14)]],
+    constructor() {
+        this.form = new FormGroup({
+            name: new FormControl('', Validators.required),
+            favoriteAngularVersion: new FormControl(2, [Validators.min(2), Validators.max(14)]),
         });
     }
 

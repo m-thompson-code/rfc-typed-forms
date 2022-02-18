@@ -1,6 +1,12 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { fromEvent, map, Observable } from 'rxjs';
+
+enum Linter {
+    ESLINT = 'eslint',
+    TSLINT = 'tslint',
+    OTHER = 'other',
+}
 
 @Component({
     selector: 'app-reseting-forms',
@@ -15,11 +21,13 @@ export class ResetingFormsComponent {
     submitValue$!: Observable<unknown>;
     submitRawValue$!: Observable<unknown>;
 
-    constructor(private fb: FormBuilder) {
-        this.form = this.fb.group({
-            name: ['', Validators.required],
-            favoriteAngularVersion: [2, [Validators.min(2), Validators.max(14)]],
-            favoriteLinter: ['eslint'],
+    Linter = Linter;
+
+    constructor() {
+        this.form = new FormGroup({
+            name: new FormControl('', Validators.required),
+            favoriteAngularVersion: new FormControl(2, [Validators.min(2), Validators.max(14)]),
+            favoriteLinter: new FormControl(Linter.ESLINT),
         });
     }
 
@@ -35,7 +43,7 @@ export class ResetingFormsComponent {
         this.form.reset({
             name: 'no name',
             favoriteAngularVersion: 2,
-            favoriteLinter: 'eslint',
+            favoriteLinter: Linter.ESLINT,
         });
     }
 }

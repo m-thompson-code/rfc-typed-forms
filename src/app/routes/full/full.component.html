@@ -7,13 +7,12 @@
     <label for="hateReact">Hate React</label>
     <input type="checkbox" id="hateReact" formControlName="hateReact" />
 
-    <label for="eslint">HTML</label><br />
-    <input type="radio" id="eslint" name="favoriteLinter" value="eslint" formControlName="favoriteLinter" />
-    <label for="css">eslint</label><br />
-    <input type="radio" id="tslint" name="favoriteLinter" value="tslint" formControlName="favoriteLinter" />
-    <label for="tslint">tslint</label>
-    <input type="radio" id="other" name="favoriteLinter" value="other" formControlName="favoriteLinter" />
-    <label for="other">other</label>
+    <label for="eslint">Favorite linter</label>
+
+    <ng-container *ngFor="let linter of [Linter.ESLINT, Linter.TSLINT, Linter.OTHER]">
+        <input type="radio" [id]="linter" name="favoriteLinter" [value]="linter" formControlName="favoriteLinter" />
+        <label [for]="linter">{{ linter }}</label>
+    </ng-container>
 
     <label for="powerLevel">Power level:</label>
     <input type="range" name="powerLevel" id="powerLevel" min="0" max="9100" step="100" formControlName="powerLevel" />

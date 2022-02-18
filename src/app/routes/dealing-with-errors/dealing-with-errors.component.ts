@@ -17,9 +17,9 @@ export class DealingWithErrorsComponent implements OnInit, OnDestroy {
 
     loading = true;
 
-    constructor(private fb: FormBuilder, private apiService: ApiService) {
-        this.form = this.fb.group({
-            amount: [],
+    constructor(private apiService: ApiService) {
+        this.form = new FormGroup({
+            amount: new FormControl(),
         });
     }
 

@@ -1,6 +1,12 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { fromEvent, map, Observable } from 'rxjs';
+
+enum Linter {
+    ESLINT = 'eslint',
+    TSLINT = 'tslint',
+    OTHER = 'other',
+}
 
 @Component({
     selector: 'app-full',
@@ -15,17 +21,19 @@ export class FullComponent implements OnInit {
     submitValue$!: Observable<unknown>;
     submitRawValue$!: Observable<unknown>;
 
-    constructor(private fb: FormBuilder) {
-        this.form = this.fb.group({
-            name: ['', Validators.required],
-            favoriteAngularVersionMajor: [2, [Validators.min(2), Validators.max(14)]],
-            favoriteAngularVersionMinor: [2, [Validators.min(2), Validators.max(14)]],
-            favoriteAngularVersionPatch: [2, [Validators.min(2), Validators.max(14)]],
-            hateReact: [false],
-            favoriteLinter: ['eslint'],
-            powerLevel: [],
-            color: [],
-            date: [],
+    Linter = Linter;
+
+    constructor() {
+        this.form = new FormGroup({
+            name: new FormControl('', Validators.required),
+            favoriteAngularVersionMajor: new FormControl(2, [Validators.min(2), Validators.max(14)]),
+            favoriteAngularVersionMinor: new FormControl(2, [Validators.min(0), Validators.max(30)]),
+            favoriteAngularVersionPatch: new FormControl(2, [Validators.min(0), Validators.max(30)]),
+            hateReact: new FormControl(false),
+            favoriteLinter: new FormControl(Linter.ESLINT),
+            powerLevel: new FormControl(),
+            color: new FormControl(),
+            date: new FormControl(),
         });
     }
 
@@ -51,7 +59,13 @@ export class FullComponent implements OnInit {
         this.form.reset({
             name: 'no name',
             favoriteAngularVersionMajor: 2,
-            favoriteLinter: 'eslint',
+            favoriteAngularVersionMinor: 0,
+            favoriteAngularVersionPatch: 0,
+            hateReact: false,
+            favoriteLinter: Linter.ESLINT,
+            powerLevel: 0,
+            color: '#000000',
+            date: new Date(),
         });
     }
 }

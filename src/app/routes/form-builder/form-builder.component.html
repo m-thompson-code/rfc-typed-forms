@@ -1,0 +1,33 @@
+<form [formGroup]="form" #formRef>
+    <input formControlName="name" />
+    <input type="number" formControlName="favoriteAngularVersion" />
+    <button type="submit">Submit</button>
+</form>
+
+Form values
+<div>
+    {{ form.value | json }}
+</div>
+
+Submit values
+<div *ngIf="submitValue$ | async as submitValue">
+    {{ submitValue | json }}
+</div>
+
+<div>------</div>
+
+<form [formGroup]="form2" #formRef2>
+    <input formControlName="name" />
+    <input type="number" formControlName="favoriteAngularVersion" />
+    <button type="submit">Submit</button>
+</form>
+
+Form values
+<div>
+    {{ form2.value | json }}
+</div>
+
+Submit values
+<div *ngIf="submitValue2$ | async as submitValue">
+    {{ submitValue | json }}
+</div>
