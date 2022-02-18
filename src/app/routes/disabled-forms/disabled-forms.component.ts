@@ -1,6 +1,12 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { fromEvent, map, Observable } from 'rxjs';
+
+// type TypedForm = {
+//     name: FormControl<string | null>;
+//     favoriteAngularVersion: FormControl<number | null>;
+//     hateReact: FormControl<boolean | null>;
+// }
 
 @Component({
     selector: 'app-disabled-forms',
@@ -10,9 +16,11 @@ import { fromEvent, map, Observable } from 'rxjs';
 export class DisabledFormsComponent implements OnInit {
     @ViewChild('formRef', { static: true }) formRef!: ElementRef<HTMLFormElement>;
 
-    form: FormGroup;
+    form: FormGroup; // <TypedForm>;
 
+    // submitValue$!: Observable<FormGroup<TypedForm>['value']>;
     submitValue$!: Observable<unknown>;
+    // submitRawValue$!: Observable<ReturnType<FormGroup<TypedForm>['getRawValue']>>;
     submitRawValue$!: Observable<unknown>;
 
     constructor() {

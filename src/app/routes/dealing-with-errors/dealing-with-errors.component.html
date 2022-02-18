@@ -1,8 +1,10 @@
+<div>Dealing With Errors Sucks Without Types</div>
+
 <ng-container *ngIf="!loading; else showLoading">
     <div *ngIf="showMeanComment">You are broke as a joke</div>
 
     <form [formGroup]="form">
-        <input type="number" formControlName="amount" />
+        <input type="number" formControlName="amount" placeholder="Currency Amount" />
     </form>
 </ng-container>
 

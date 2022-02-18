@@ -1,4 +1,4 @@
-import { Component, ElementRef, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { fromEvent, map, Observable } from 'rxjs';
 
@@ -8,15 +8,20 @@ enum Linter {
     OTHER = 'other',
 }
 
+// type TypedForm = {
+//     name: FormControl<string | null>;
+//     favoriteLinter: FormControl<Linter | null>;
+// };
+
 @Component({
     selector: 'app-reseting-forms',
     templateUrl: './reseting-forms.component.html',
     styleUrls: ['./reseting-forms.component.scss'],
 })
-export class ResetingFormsComponent {
+export class ResetingFormsComponent implements OnInit {
     @ViewChild('formRef', { static: true }) formRef!: ElementRef<HTMLFormElement>;
 
-    form: FormGroup;
+    form: FormGroup; //<TypedForm>;
 
     submitValue$!: Observable<unknown>;
     submitRawValue$!: Observable<unknown>;
@@ -42,7 +47,6 @@ export class ResetingFormsComponent {
     resetWithValues(): void {
         this.form.reset({
             name: 'no name',
-            favoriteAngularVersion: 2,
             favoriteLinter: Linter.ESLINT,
         });
     }

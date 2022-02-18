@@ -3,9 +3,10 @@ import { FormControl, FormGroup } from '@angular/forms';
 import { Subject, takeUntil, tap } from 'rxjs';
 import { Amount, ApiService } from 'src/app/services/api.service';
 
-type TypedForm = {
-    amount: FormControl<Amount | null>;
-};
+// type TypedForm = {
+//     name: FormControl<string | null>;
+//     favoriteAngularVersion: FormControl<number | null>;
+// }
 
 @Component({
     selector: 'app-dealing-with-errors',
