@@ -48,6 +48,13 @@ input[type="range"] {
 input[type="datetime-local"] {
   width: $input-width;
 }
+input:disabled {
+  color: grey;
+  background: darkgrey;
+  border-color: grey;
+  border-style: solid;
+  cursor: not-allowed;
+}
 button {
   padding: $spacing #{$spacing * 2};
   height: $spacing * 6;
@@ -92,4 +99,19 @@ button {
     flex-grow: 2;
     width: 50%;
   }
+}
+
+a, button {
+  cursor: pointer;
+}
+
+button {
+  background: cornflowerblue;
+  color: white;
+}
+button:hover {
+  background: lighten(cornflowerblue, 5);
+}
+button:active {
+  background: darken(cornflowerblue, 10);
 }

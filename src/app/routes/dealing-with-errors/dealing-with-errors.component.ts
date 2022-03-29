@@ -45,6 +45,7 @@ export class DealingWithErrorsComponent implements OnInit, OnDestroy {
 
     setShowMeanComment(amount: Amount | null): void {
         const value = amount?.currency.amount ?? 0;
+
         this.showMeanComment = value <= 0;
     }
 
